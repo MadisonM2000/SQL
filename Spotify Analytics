@@ -1,0 +1,19 @@
+# For this project, I downloaded Spotify data from Kaggle.
+# Then I created a table to insert Spotify data into.
+# Finally, I performed analytics on the data using SQL. 
+
+#1. List only songs that feature a second artist
+
+SELECT track_name
+FROM bit_db.spotifydata
+WHERE track_name LIKE '%feat%'
+OR track_name LIKE '%with%'
+AND track_name NOT LIKE 'without you';
+
+# 12. select top 10 most popular artists based on average 
+
+SELECT artist_name, AVG(popularity) AS avg_popularity
+FROM bit_db.spotifydata
+GROUP BY artist_name
+order by avg_popularity DESC
+LIMIT 10;
